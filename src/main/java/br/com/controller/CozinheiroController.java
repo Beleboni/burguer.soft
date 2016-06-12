@@ -36,11 +36,11 @@ public class CozinheiroController {
 		if(produto != null){
 			try {
 				produtoDAO.salvar(produto);
+				result.redirectTo(AdministradorController.class).painelAdministrativo();
 			} catch (DAOException e) {
 				// TODO: handle exception
 			}
 		}
-		result.forwardTo(CozinheiroController.class).montar_cardapio_alimentos();
 	}
 	
 }

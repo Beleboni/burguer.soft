@@ -34,11 +34,11 @@ public class GarcomController {
 		if(produto != null){
 			try {
 				produtoDAO.salvar(produto);
+				result.redirectTo(AdministradorController.class).painelAdministrativo();
 			} catch (DAOException e) {
 				// TODO: handle exception
 			}
 		}
-		result.forwardTo(GarcomController.class).montar_cardapio_bebidas();
 	}
 
 }

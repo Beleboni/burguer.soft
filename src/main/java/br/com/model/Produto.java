@@ -7,13 +7,19 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 import br.com.enums.Status;
 import br.com.interfaces.UsoCodigo;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = "Produto.TODAS_BEBIDAS", query = "select p from Produto p where p.tipoProduto = 'Bebida'"),
+	@NamedQuery(name = "Produto.TODOS_LANCHES", query = "select p from Produto p where p.tipoProduto = 'Lanche'")
+})
 public class Produto implements UsoCodigo {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;

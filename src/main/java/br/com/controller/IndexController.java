@@ -25,6 +25,7 @@ public class IndexController {
 
 	@Path("/")
 	public void index() {
+		result.redirectTo(AdministradorController.class).painelAdministrativo();
 		result.include("variable", "VRaptor!");
 	}
 }

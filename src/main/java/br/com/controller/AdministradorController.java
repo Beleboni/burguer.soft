@@ -1,5 +1,7 @@
 package br.com.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
@@ -7,6 +9,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.dao.FuncionarioDAO;
+import br.com.dao.ProdutoDAO;
 import br.com.exception.DAOException;
 import br.com.model.Funcionario;
 
@@ -15,6 +18,9 @@ public class AdministradorController {
 
 	@Inject
 	private FuncionarioDAO funcionarioDAO;
+	
+	@Inject
+	private ProdutoDAO produtoDAO;
 
 	@Inject
 	private Result result;
@@ -33,11 +39,18 @@ public class AdministradorController {
 		if (funcionario != null) {
 			try {
 				funcionarioDAO.salvar(funcionario);
+				result.redirectTo(this).painelAdministrativo();
 			} catch (DAOException e) {
 				// TODO: handle exception
 			}
 		}
-		result.forwardTo(AdministradorController.class).cadastro();
+	}
+	
+	@Get("/painel_administrativo")
+	public List<Funcionario> painelAdministrativo () {
+		result.include("bebidas", produtoDAO.findTodasBebidas());
+		result.include("lanches", produtoDAO.findTodosLanches());
+		return funcionarioDAO.listar(Funcionario.class);
 	}
 
 }

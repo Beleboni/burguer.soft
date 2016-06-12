@@ -9,8 +9,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -18,10 +16,7 @@ import br.com.enums.Status;
 import br.com.interfaces.UsoCodigo;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = Funcionario.TODOS, query = "select f from Funcionario f") })
 public class Funcionario implements UsoCodigo {
-
-	public static final String TODOS = "TODOS";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +36,7 @@ public class Funcionario implements UsoCodigo {
 	private String usuario;
 	@Column(nullable = false, length = 30)
 	private String senha;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, length = 30)
 	private Status status = Status.ATIVO;

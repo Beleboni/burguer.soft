@@ -86,27 +86,10 @@ public abstract class HibernateDAO<T extends UsoCodigo> implements GenericDAO<T>
 	}
 
 	@Override
-	public List<T> buscar(Class<T> classe, String descricao) {
-		this.conectar();
-		try {
-			// String hql = "from "+classe.getName()+" a where upper(a.nome)
-			// like ?";
-			// TypedQuery<T> query = em.createQuery(hql, classe);
-			// TypedQuery<T> query = em.createNativeQuery("SELECT * FROM ALUNO",
-			// classe);
-			TypedQuery<T> query = em.createNamedQuery("FILTRA_POR_NOME", classe);
-			query.setParameter(1, "%" + descricao.toUpperCase() + "%");
-			return query.getResultList();
-		} finally {
-			this.finalizar();
-		}
-	}
-
-	@Override
 	public List<T> listar(Class<T> classe) {
 		this.conectar();
 		try {
-			TypedQuery<T> query = em.createNamedQuery("TODOS", classe);
+			TypedQuery<T> query = em.createQuery("from " + classe.getSimpleName(), classe);
 			return query.getResultList();
 		} finally {
 			this.finalizar();
