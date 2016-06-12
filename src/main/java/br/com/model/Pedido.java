@@ -1,6 +1,7 @@
 package br.com.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,11 +14,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import br.com.interfaces.UsoCodigo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import br.com.interfaces.UsoCodigo;
 
 @Getter
 @Setter
@@ -39,7 +40,7 @@ public class Pedido implements UsoCodigo {
 	private Funcionario funcionario;
 	
 	@OneToMany(cascade = CascadeType.PERSIST)
-	private ItemPedido itemPedido;
+	private List<ItemPedido> itens;
 	
 	@Override
 	public Long getCodigo() {
