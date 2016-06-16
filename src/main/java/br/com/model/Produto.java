@@ -11,20 +11,24 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 import br.com.enums.Status;
+import br.com.enums.TipoProduto;
 import br.com.interfaces.UsoCodigo;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name = "Produto.TODAS_BEBIDAS", query = "select p from Produto p where p.tipoProduto = 'Bebida'"),
-	@NamedQuery(name = "Produto.TODOS_LANCHES", query = "select p from Produto p where p.tipoProduto = 'Lanche'")
+	@NamedQuery(name = "Produto.PRODUTOS_POR_TIPO", query = "select p from Produto p where p.tipoProduto = ?1"),
+	@NamedQuery(name = "Produto.PRODUTOS_COZINHA", query = "select p from Produto p where p.tipoProduto <> br.com.enums.TipoProduto.BEBIDA")
+	
 })
 public class Produto implements UsoCodigo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
+	
+	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, length = 30)
-	private String tipoProduto;
+	private TipoProduto tipoProduto;
 	@Column(nullable = false, length = 30)
 	private Double valor;
 	@Column(nullable = false, length = 200)
@@ -38,7 +42,7 @@ public class Produto implements UsoCodigo {
 
 	}
 
-	public Produto(Long codigo, String tipoProduto, Double valor,
+	public Produto(Long codigo, TipoProduto tipoProduto, Double valor,
 			String descricao, Status status) {
 		super();
 		this.codigo = codigo;
@@ -53,11 +57,11 @@ public class Produto implements UsoCodigo {
 		return this.codigo;
 	}
 
-	public String getTipoProduto() {
+	public TipoProduto getTipoProduto() {
 		return tipoProduto;
 	}
 
-	public void setTipoProduto(String tipoProduto) {
+	public void setTipoProduto(TipoProduto tipoProduto) {
 		this.tipoProduto = tipoProduto;
 	}
 

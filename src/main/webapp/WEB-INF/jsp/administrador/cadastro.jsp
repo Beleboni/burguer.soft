@@ -17,56 +17,76 @@
 </head>
 
 <body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="painel_administrativo.html"><i class="fa fa-cutlery" aria-hidden="true"></i> Burguer Soft</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a>Costelão Restaurante</a></li>
+                        <li><a>Usuário: Pedro da Silva</a></li>
+                        <li><a href="index.html">Sair</a></li>
+                    </ul>
+                </div>
+            </div>
+    </nav>
 	<div class="container">
 		<h1 class="page-header">Cadastrar Colaborador</h1>
 		<form action="<c:url value='/cadastrar_colaborador'/>" method="post" class="form-horizontal">
 			<div class="form-group">
-				<label for="inputNome" class="col-sm-2 control-label">*
-					Nome:</label>
+				<label for="inputNome" class="col-sm-2 control-label">
+					Nome *</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="funcionario.nome"
 						placeholder="Nome">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputCpf" class="col-sm-2 control-label">* Cpf:</label>
-				<div class="col-sm-10">
+				<label for="inputCpf" class="col-sm-2 control-label">Cpf *</label>
+				<div class="col-sm-4">
 					<input type="text" class="form-control" name="funcionario.cpf"
 						placeholder="Cpf">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputTelefone" class="col-sm-2 control-label">*
-					Telefone:</label>
-				<div class="col-sm-10">
+				<label for="inputTelefone" class="col-sm-2 control-label">
+					Telefone *</label>
+				<div class="col-sm-3">
 					<input type="text" class="form-control" name="funcionario.telefone"
 						placeholder="Telefone">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputSetor" class="col-sm-2 control-label">*
-					Setor:</label>
-				<div class="col-sm-10">
+				<label for="inputSetor" class="col-sm-2 control-label">
+					Setor *</label>
+				<div class="col-sm-2">
 					<select class="form-control" name="funcionario.setor">
-						<option value="Garcom">Garçom</option>
-						<option value="Cozinheiro">Cozinheiro</option>
-						<option value="Administrador">Administrador</option>
+						<option value="GARCOM">Garçom</option>
+						<option value="COZINHEIRO">Cozinheiro</option>
+						<option value="ADMINISTRADOR">Administrador</option>
 					</select>
 					 
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputUsuario" class="col-sm-2 control-label">*
-					Usuario:</label>
-				<div class="col-sm-10">
+				<label for="inputUsuario" class="col-sm-2 control-label">
+					Usuario *</label>
+				<div class="col-sm-4">
 					<input type="text" class="form-control" name="funcionario.usuario"
 						placeholder="Usuario">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputSenha" class="col-sm-2 control-label">*
-					Senha:</label>
-				<div class="col-sm-10">
+				<label for="inputSenha" class="col-sm-2 control-label">
+					Senha *</label>
+				<div class="col-sm-3">
 					<input type="text" class="form-control" name="funcionario.senha"
 						placeholder="Senha">
 				</div>
@@ -89,6 +109,8 @@
 			</div>
 		</form>
 	</div>
+	
+	
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 </body>

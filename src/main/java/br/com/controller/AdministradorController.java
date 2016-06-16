@@ -12,6 +12,7 @@ import br.com.dao.FuncionarioDAO;
 import br.com.dao.ProdutoDAO;
 import br.com.exception.DAOException;
 import br.com.model.Funcionario;
+import br.com.model.Produto;
 
 @Controller
 public class AdministradorController {
@@ -47,10 +48,17 @@ public class AdministradorController {
 	}
 	
 	@Get("/painel_administrativo")
-	public List<Funcionario> painelAdministrativo () {
-		result.include("bebidas", produtoDAO.findTodasBebidas());
-		result.include("lanches", produtoDAO.findTodosLanches());
+	public List<Funcionario> painelAdministrativo () {	
+		result.include("produtos", produtoDAO.listar(Produto.class));
 		return funcionarioDAO.listar(Funcionario.class);
+	}
+	
+	
+	
+	@Get("/editarFuncionario/{codigo}")
+	public void editar(Long codigo) {
+		this.funcionario = funcionarioDAO.buscar(Funcionario.class, codigo);
+		result.redirectTo(this).painelAdministrativo();
 	}
 
 }
