@@ -24,16 +24,17 @@ public class ProdutoDAO extends HibernateDAO<Produto> {
 		}
 	}
 
-	// BUSCAS ESPECIFICAS - LISTAR TODAS AS BEBIDAS
-		public List<Produto> findProdutosCozinha() {
-			this.conectar();
-			try {
-				TypedQuery<Produto> query = em.createNamedQuery(
-						"Produto.PRODUTOS_COZINHA", Produto.class);
-				return query.getResultList();
-			} finally {
-				this.finalizar();
-			}
+	// BUSCAS ESPECIFICAS - LISTAR TODAS AS COMIDAS
+	public List<Produto> findProdutosCozinha() {
+		this.conectar();
+		try {
+			TypedQuery<Produto> query = em.createNamedQuery(
+					"Produto.PRODUTOS_COZINHA", Produto.class);
+			return query.getResultList();
+		} finally {
+			this.finalizar();
 		}
+	}
 	
+
 }

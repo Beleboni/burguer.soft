@@ -26,7 +26,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="painel_administrativo.html"><i class="fa fa-cutlery" aria-hidden="true"></i> Burguer Soft</a>
+                    <a class="navbar-brand" href="<c:url value='/painel_administrativo'/>"><i class="fa fa-cutlery" aria-hidden="true"></i> Burguer Soft</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">

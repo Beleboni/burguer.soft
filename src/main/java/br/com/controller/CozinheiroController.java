@@ -1,5 +1,7 @@
 package br.com.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
@@ -31,12 +33,18 @@ public class CozinheiroController {
 		
 	}
 	
+	@Get("/painelCozinheiro")
+	public List<Produto> painelCozinheiro(){
+		return produtoDAO.findProdutosCozinha();		
+	}
+	
+	
 	@Post("/cadastrar_produto")
 	public void cadastrar_produto(Produto produto){
 		if(produto != null){
 			try {
 				produtoDAO.salvar(produto);
-				result.redirectTo(AdministradorController.class).painelAdministrativo();
+				result.redirectTo(CozinheiroController.class).painelCozinheiro();
 			} catch (DAOException e) {
 				// TODO: handle exception
 			}

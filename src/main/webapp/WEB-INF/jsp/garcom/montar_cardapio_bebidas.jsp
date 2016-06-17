@@ -31,7 +31,7 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand"
-					href="<c:url value='/painel_administrativo'/>"><i
+					href="<c:url value='/painelGarcom'/>"><i
 					class="fa fa-cutlery" aria-hidden="true"></i> Burguer Soft</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
@@ -46,7 +46,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
-				<form action="<c:url value='/cadastrar_produto'/>" method="post"
+				<form action="<c:url value='/cadastrar_bedida'/>" method="post"
 					class="form-horizontal">
 					<h2 class="page-header">Cadastrar novo produto</h2>
 					<div class="form-group">

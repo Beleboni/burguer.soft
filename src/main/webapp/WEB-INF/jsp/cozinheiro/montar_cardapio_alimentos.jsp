@@ -31,7 +31,7 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand"
-					href="<c:url value='/painel_administrativo'/>"><i
+					href="<c:url value='/painelCozinheiro'/>"><i
 					class="fa fa-cutlery" aria-hidden="true"></i> Burguer Soft</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
