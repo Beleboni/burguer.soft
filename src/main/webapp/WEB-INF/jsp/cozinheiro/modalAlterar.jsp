@@ -7,15 +7,43 @@
 				aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
-			<h4 class="modal-title" id="alterar">Alterar dados</h4>
+			<h4 class="modal-title" id="alterar">Alterar</h4>
 		</div>
-		<form action="${linkTo[GarcomController].alterar(produto)}" method="post" class="form-horizontal">
+		<form action="${linkTo[CozinheiroController].alterar(produto)}" method="post" class="form-horizontal">
 			<div class="modal-body">
 				<input type="hidden" name="_method" value="put" />
 				<div class="form-group">
 					<label for="descricao" class="col-sm-2 control-label">Descrição</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="produto.descricao" value="${produto.descricao}">		
+						<input type="text" class="form-control" id="descricao" value="${produto.descricao}" name="produto.descricao">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="status" class="col-sm-2 control-label">Tipo produto</label>
+					<div class="col-sm-5">
+						<select class="form-control" name="produto.tipoProduto">
+							<option value="LANCHE" <c:if test="${produto.tipoProduto eq 'LANCHE'}">selected="selected"</c:if>>
+								Lanche
+							</option>
+							<option value="PORCAO" <c:if test="${produto.tipoProduto eq 'PORCAO'}">selected="selected"</c:if>>
+								Porção
+							</option>
+							<option value="ALMOCO" <c:if test="${produto.tipoProduto eq 'ALMOCO'}">selected="selected"</c:if>>
+								Almoço
+							</option>
+							<option value="BIFE_SOPAS" <c:if test="${produto.tipoProduto eq 'BIFE_SOPAS'}">selected="selected"</c:if>>
+								Bife sopas
+							</option>
+							<option value="SOBREMESA" <c:if test="${produto.tipoProduto eq 'SOBREMESA'}">selected="selected"</c:if>>
+								Sobremesa
+							</option>
+							<option value="SORVETE" <c:if test="${produto.tipoProduto eq 'SORVETE'}">selected="selected"</c:if>>
+								Sorvete
+							</option>
+							<option value="RODIZIO_PIZZA" <c:if test="${produto.tipoProduto eq 'RODIZIO_PIZZA'}">selected="selected"</c:if>>
+								Rodizio pizza
+							</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-group">
@@ -45,3 +73,6 @@
 		</form>
 	</div>
 </div>
+
+
+

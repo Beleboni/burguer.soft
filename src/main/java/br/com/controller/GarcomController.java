@@ -33,6 +33,11 @@ public class GarcomController {
 		
 	}
 	
+	@Get("/novoPedido")
+	public void novoPedido(){
+		
+	}
+	
 	@Post("/cadastrar_bedida")
 	public void cadastrar_bebida(Produto produto){
 		if(produto != null){

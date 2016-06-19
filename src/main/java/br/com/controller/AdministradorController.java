@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
+import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Result;
 import br.com.dao.FuncionarioDAO;
 import br.com.dao.ProdutoDAO;
@@ -55,10 +56,19 @@ public class AdministradorController {
 	
 	
 	
-	@Get("/editarFuncionario/{codigo}")
-	public void editar(Long codigo) {
-		this.funcionario = funcionarioDAO.buscar(Funcionario.class, codigo);
-		result.redirectTo(this).painelAdministrativo();
+	@Get("/funcionario/{funcionario.codigo}/modalAlterar")
+	public Funcionario modalAlterar(Funcionario funcionario){
+		return funcionarioDAO.buscar(Funcionario.class, funcionario.getCodigo());
 	}
-
+	
+	
+	@Put("/alterar/{funcionario.codigo}/funcionario")
+	public void alterar(Funcionario funcionario){
+		try {
+			funcionarioDAO.salvar(funcionario);
+			result.redirectTo(this).painelAdministrativo();
+		} catch (DAOException e) {
+			e.printStackTrace();
+		}
+	}
 }

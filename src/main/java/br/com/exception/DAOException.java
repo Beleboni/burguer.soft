@@ -1,10 +1,6 @@
 package br.com.exception;
 
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 public class DAOException extends Exception {
 
 	private static final long serialVersionUID = 5093346828738795858L;
@@ -31,5 +27,23 @@ public class DAOException extends Exception {
 		}
 		return null;
 	}
+
+	public String getMensagem() {
+		return mensagem;
+	}
+
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
+	}
+
+	public String getMensagemTratada() {
+		return mensagemTratada;
+	}
+
+	public void setMensagemTratada(String mensagemTratada) {
+		this.mensagemTratada = mensagemTratada;
+	}
+	
+	
 	
 }

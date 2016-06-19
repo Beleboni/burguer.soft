@@ -11,9 +11,7 @@ public class IndexController {
 
 	private final Result result;
 
-	/**
-	 * @deprecated CDI eyes only
-	 */
+	
 	protected IndexController() {
 		this(null);
 	}
@@ -25,7 +23,7 @@ public class IndexController {
 
 	@Path("/")
 	public void index() {
-		result.redirectTo(AdministradorController.class).painelAdministrativo();
+		//result.redirectTo(AdministradorController.class).painelAdministrativo();
 		result.include("variable", "VRaptor!");
 	}
 }

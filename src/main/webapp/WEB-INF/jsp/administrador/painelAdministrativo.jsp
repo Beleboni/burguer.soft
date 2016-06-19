@@ -65,8 +65,9 @@
 							<tr class="success">
 								<th>Nome</th>
 								<th>Telefone</th>
-								<th>Status</th>
 								<th>Setor</th>
+								<th>Usuário</th>
+								<th>Status</th>
 								<th class="text-center">Ação</th>
 							</tr>
 						</thead>
@@ -75,11 +76,13 @@
 								<tr>
 									<td>${funcionario.nome}</td>
 									<td>${funcionario.telefone}</td>
-									<td>${funcionario.status}</td>
 									<td>${funcionario.setor}</td>
-									<td class="text-center"><a href="#" data-toggle="modal"
-										data-target="#myModal"><i
-											class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a></td>
+									<td>${funcionario.usuario}</td>									
+									<td>${funcionario.status}</td>
+									<td class="text-center"><a class="abrirModal"
+										href="${linkTo[AdministradorController].modalAlterar(funcionario)}">
+											<i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+									</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -110,101 +113,27 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
 
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="myModalLabel">Alterar dados
-						colaborador</h4>
-				</div>
-				<div class="modal-body">
-					<form class="form-horizontal">
-						<div class="form-group">
-							<label for="inputNome" class="col-sm-2 control-label">Nome
-								*</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="inputNome"
-									placeholder="Nome">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="inputCpf" class="col-sm-2 control-label">Cpf
-								*</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control" id="inputCpf"
-									placeholder="Cpf">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="inputTelefone" class="col-sm-2 control-label">Telefone
-								*</label>
-							<div class="col-sm-5">
-								<input type="text" class="form-control" id="inputTelefone"
-									placeholder="Telefone">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="inputSetor" class="col-sm-2 control-label">Setor
-								*</label>
-							<div class="col-sm-3">
-								<select class="form-control">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="inputUsuario" class="col-sm-2 control-label">Usuario
-								*</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control" id="inputUsuario"
-									placeholder="Usuario">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="inputSenha" class="col-sm-2 control-label">Senha
-								*</label>
-							<div class="col-sm-3">
-								<input type="text" class="form-control" id="inputSenha"
-									placeholder="Senha">
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-sm-offset-2 col-sm-10">
-								<div class="checkbox">
-									<div class="row">
-										<label>* Itens Obrigatórios</label>
-									</div>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-					<button type="button" class="btn btn-primary">Alterar</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script>
-		$('#myModal').modal(options)
-	</script>
 	<script
 		src="<%=request.getContextPath()%>/resources/estilo/js/jquery.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/estilo/js/bootstrap.min.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/estilo/js/scripts.js"></script>
+	<script>
+		$('.abrirModal').on('click', function(e) {
+			var _modal = $('#myModal'); 
+			$.get($(this).attr('href'), function(data) {
+				_modal.html(data);
+				_modal.modal('show');
+			});
+			
+			e.stopPropagation();
+			e.preventDefault();
+		});
+	</script>
 </body>
 
 </html>

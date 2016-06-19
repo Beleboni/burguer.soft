@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
+import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Result;
 import br.com.dao.ProdutoDAO;
 import br.com.exception.DAOException;
@@ -48,6 +49,21 @@ public class CozinheiroController {
 			} catch (DAOException e) {
 				// TODO: handle exception
 			}
+		}
+	}
+	
+	@Get("/cozinheiro/{produto.codigo}/modalAlterar")
+	public Produto modalAlterar(Produto produto){
+		return produtoDAO.buscar(Produto.class, produto.getCodigo());
+	}
+	
+	@Put("/alterar/{produto.codigo}/cozinheiro")
+	public void alterar(Produto produto){
+		try {
+			produtoDAO.salvar(produto);
+			result.redirectTo(this).painelCozinheiro();
+		} catch (DAOException e) {
+			e.printStackTrace();
 		}
 	}
 	

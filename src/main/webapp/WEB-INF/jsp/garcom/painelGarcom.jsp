@@ -55,6 +55,8 @@
 							class="sr-only">(current)</span></a></li>
 					<li><a href="<c:url value='/montar_cardapio_bebidas'/>"><i
 							class="fa fa-plus" aria-hidden="true"></i> Adicionar item</a></li>
+					<li><a href="<c:url value='/novoPedido'/>"><i
+							class="fa fa-plus" aria-hidden="true"></i> Novo pedido</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -62,7 +64,7 @@
 				<div class="table-responsive">
 					<table class="table table-striped">
 						<thead>
-							<tr>
+							<tr class="success">
 								<th>Descrição</th>
 								<th>Valor</th>
 								<th>Tipo</th>
@@ -92,6 +94,7 @@
 	</div>
 
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
+	
 	<script
 		src="<%=request.getContextPath()%>/resources/estilo/js/jquery.js"></script>
 	<script

@@ -63,7 +63,7 @@
 				<div class="table-responsive">
 					<table class="table table-striped">
 						<thead>
-							<tr>
+							<tr class="success">
 								<th>Descrição</th>
 								<th>Valor</th>
 								<th>Tipo</th>
@@ -78,9 +78,10 @@
 									<td>${produto.valor}</td>
 									<td>${produto.tipoProduto}</td>
 									<td>${produto.status}</td>
-									<td class="text-center"><a href="#" data-toggle="modal"
-										data-target="#myModal"><i
-											class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+									<td class="text-center">
+									<a class="abrirModal" href="${linkTo[CozinheiroController].modalAlterar(produto)}">
+										<i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+									</a>
 									</td>
 								</tr>
 							</c:forEach>
@@ -90,60 +91,25 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="alterar">Alterar</h4>
-				</div>
-				<div class="modal-body">
-					<form action="" method="post" class="form-horizontal">
-						<div class="form-group">
-							<label for="descricao" class="col-sm-2 control-label">Descrição</label>
-							<div class="col-sm-5">
-								<input type="text" class="form-control" id="descricao">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="valor" class="col-sm-2 control-label">Valor</label>
-							<div class="col-sm-3">
-								<input type="text" class="form-control" id="valor">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="status" class="col-sm-2 control-label">Status</label>
-							<div class="col-sm-5">
-								<select class="form-control">
-									<option name="Ativo">Ativo</option>
-									<option name="Inativo">Inativo</option>
-								</select>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-					<button type="button" class="btn btn-primary">Alterar</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<script>
-		$('#myModal').modal(options)
-	</script>
+	
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
 	<script
 		src="<%=request.getContextPath()%>/resources/estilo/js/jquery.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/estilo/js/bootstrap.min.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/estilo/js/scripts.js"></script>
-
+	<script>
+		$('.abrirModal').on('click', function(e) {
+			var _modal = $('#myModal'); 
+			$.get($(this).attr('href'), function(data) {
+				_modal.html(data);
+				_modal.modal('show');
+			});
+			
+			e.stopPropagation();
+			e.preventDefault();
+		});
+	</script>
 </body>
 </html>
