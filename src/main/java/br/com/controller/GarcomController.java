@@ -1,6 +1,8 @@
 package br.com.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -35,7 +37,11 @@ public class GarcomController {
 	
 	@Get("/novoPedido")
 	public void novoPedido(){
-		
+		Map<TipoProduto, List<Produto>> produtos = new HashMap<TipoProduto, List<Produto>>();
+		for (TipoProduto tipo : TipoProduto.values()) {
+			produtos.put(tipo, produtoDAO.findByTipoProduto(tipo));
+		}
+		result.include("produtos", produtos);
 	}
 	
 	@Post("/cadastrar_bedida")
@@ -69,6 +75,11 @@ public class GarcomController {
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Get("/todosPedidosGarcom")
+	public void todosPedidosGarcom(){
+		
 	}
 
 }

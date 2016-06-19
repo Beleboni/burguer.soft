@@ -67,4 +67,9 @@ public class CozinheiroController {
 		}
 	}
 	
+	@Get("/todosPedidosCozinheiro")
+	public void todosPedidosCozinheiro(){
+		
+	}
+	
 }

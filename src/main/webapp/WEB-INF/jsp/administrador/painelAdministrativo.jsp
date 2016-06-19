@@ -55,6 +55,8 @@
 							class="sr-only">(current)</span></a></li>
 					<li><a href="<c:url value='/cadastro'/>"><i
 							class="fa fa-user-plus" aria-hidden="true"></i> Novo colaborador</a></li>
+					<li><a href="<c:url value='/todosPedidosAdministrador'/>"><i class="fa fa-list" aria-hidden="true"></i>
+					 Todos os pedidos</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

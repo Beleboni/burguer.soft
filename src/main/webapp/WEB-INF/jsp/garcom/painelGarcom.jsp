@@ -57,6 +57,8 @@
 							class="fa fa-plus" aria-hidden="true"></i> Adicionar item</a></li>
 					<li><a href="<c:url value='/novoPedido'/>"><i
 							class="fa fa-plus" aria-hidden="true"></i> Novo pedido</a></li>
+					<li><a href="<c:url value='/todosPedidosGarcom'/>"><i 
+							class="fa fa-list" aria-hidden="true"></i> Todos os pedidos</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

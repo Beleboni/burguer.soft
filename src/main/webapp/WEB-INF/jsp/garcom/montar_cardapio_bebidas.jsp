@@ -63,7 +63,7 @@
 							Descrição *</label>
 						<div class="col-sm-10">
 							<textarea class="form-control" rows="5" name="produto.descricao"
-								placeholder="Descrição do produto"></textarea>
+								placeholder="Descrição do produto" required="required"></textarea>
 						</div>
 					</div>
 					<div class="form-group">
@@ -71,7 +71,7 @@
 							Valor unitário *</label>
 						<div class="col-sm-2">
 							<input type="text" class="form-control" name="produto.valor"
-								placeholder="Valor unitário">
+								placeholder="Valor unitário" required="required">
 						</div>
 					</div>
 
@@ -86,8 +86,8 @@
 							<button type="submit" class="btn btn-primary">
 								<i class="fa fa-check" aria-hidden="true"></i> Cadastrar item
 							</button>
-							<button type="submit" class="btn btn-warning">
-								<i class="fa fa-times" aria-hidden="true"></i> Cancelar
+							<button type="reset" class="btn btn-warning">
+								<i class="fa fa-eraser" aria-hidden="true"></i> Limpar campos
 							</button>
 						</div>
 					</div>
@@ -96,8 +96,11 @@
 		</div>
 	</div>
 
-	<script src="estilo/js/jquery.js"></script>
-	<script src="estilo/js/bootstrap.min.js"></script>
-	<script src="estilo/js/scripts.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/estilo/js/jquery.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/estilo/js/bootstrap.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/estilo/js/scripts.js"></script>
 </body>
 </html>

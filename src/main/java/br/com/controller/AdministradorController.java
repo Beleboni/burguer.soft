@@ -71,4 +71,9 @@ public class AdministradorController {
 			e.printStackTrace();
 		}
 	}
+	
+	@Get("/todosPedidosAdministrador")
+	public void todosPedidosAdministrador(){
+		
+	}
 }
