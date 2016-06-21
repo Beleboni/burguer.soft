@@ -57,7 +57,7 @@
 					<li><a href="<c:url value='/montar_cardapio_alimentos'/>"><i
 							class="fa fa-plus" aria-hidden="true"></i> Adicionar item</a></li>
 					<li><a href="<c:url value='/todosPedidosCozinheiro'/>"><i
-							class="fa fa-plus" aria-hidden="true"></i> Todos os pedidos</a></li>
+							class="fa fa-list" aria-hidden="true"></i> Todos os pedidos</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -80,11 +80,10 @@
 									<td>${produto.valor}</td>
 									<td>${produto.tipoProduto}</td>
 									<td>${produto.status}</td>
-									<td class="text-center">
-									<a class="abrirModal" href="${linkTo[CozinheiroController].modalAlterar(produto)}">
-										<i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
-									</a>
-									</td>
+									<td class="text-center"><a class="abrirModal"
+										href="${linkTo[CozinheiroController].modalAlterar(produto)}">
+											<i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+									</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -93,8 +92,9 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
+
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel"></div>
 	<script
 		src="<%=request.getContextPath()%>/resources/estilo/js/jquery.js"></script>
 	<script
@@ -103,12 +103,12 @@
 		src="<%=request.getContextPath()%>/resources/estilo/js/scripts.js"></script>
 	<script>
 		$('.abrirModal').on('click', function(e) {
-			var _modal = $('#myModal'); 
+			var _modal = $('#myModal');
 			$.get($(this).attr('href'), function(data) {
 				_modal.html(data);
 				_modal.modal('show');
 			});
-			
+
 			e.stopPropagation();
 			e.preventDefault();
 		});

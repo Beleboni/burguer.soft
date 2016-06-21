@@ -111,8 +111,12 @@
 	</div>
 	
 	
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/estilo/js/jquery.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/estilo/js/bootstrap.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/estilo/js/scripts.js"></script>
 </body>
 </html>
 

@@ -9,13 +9,17 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.com.enums.Setor;
 import br.com.enums.Status;
 import br.com.interfaces.UsoCodigo;
 
 @Entity
+@NamedQueries({ @NamedQuery(name = "Funcionario.POR_USUARIO", query = "select f from Funcionario f where f.usuario = ?1") })
 public class Funcionario implements UsoCodigo {
 
 	@Id
@@ -27,12 +31,13 @@ public class Funcionario implements UsoCodigo {
 	private String cpf;
 	@Column(nullable = false, length = 30)
 	private String telefone;
+	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, length = 30)
-	private String setor;
+	private Setor setor;
 
 	@Temporal(TemporalType.DATE)
 	private Date admissao = new Date();
-	@Column(nullable = false, length = 30)
+	@Column(nullable = false, length = 30, unique = true)
 	private String usuario;
 	@Column(nullable = false, length = 30)
 	private String senha;
@@ -46,7 +51,7 @@ public class Funcionario implements UsoCodigo {
 	}
 
 	public Funcionario(Long codigo, String nome, String cpf, String telefone,
-			String setor, Date admissao, String usuario, String senha,
+			Setor setor, Date admissao, String usuario, String senha,
 			Status status) {
 		super();
 		this.codigo = codigo;
@@ -84,11 +89,11 @@ public class Funcionario implements UsoCodigo {
 		this.telefone = telefone;
 	}
 
-	public String getSetor() {
+	public Setor getSetor() {
 		return setor;
 	}
 
-	public void setSetor(String setor) {
+	public void setSetor(Setor setor) {
 		this.setor = setor;
 	}
 
@@ -131,6 +136,14 @@ public class Funcionario implements UsoCodigo {
 	@Override
 	public Long getCodigo() {
 		return this.codigo;
+	}
+
+	public boolean isAtivo() {
+		return Status.ATIVO.equals(this.getStatus());
+	}
+
+	public boolean verificaUsuario(String senha) {
+		return this.senha.equals(senha) && this.isAtivo();
 	}
 
 }

@@ -83,7 +83,8 @@ public abstract class HibernateDAO<T extends UsoCodigo> implements GenericDAO<T>
 		} finally {
 			this.finalizar();
 		}
-	}
+	}	
+	
 
 	@Override
 	public List<T> listar(Class<T> classe) {

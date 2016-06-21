@@ -1,5 +1,5 @@
-
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -30,7 +30,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<c:url value='/painel_administrador'/>"><i class="fa fa-cutlery" aria-hidden="true"></i> Burguer Soft</a>
+                    <a class="navbar-brand" href="<c:url value='/painel_administrativo'/>"><i class="fa fa-cutlery" aria-hidden="true"></i> Burguer Soft</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -47,7 +47,7 @@
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
                         <li class="active"><a href="#">Administrar <span class="sr-only">(current)</span></a></li>
-                        <li><a href="<c:url value='/painel_administrador'/>">Voltar</a></li>
+                        <li><a href="<c:url value='/painel_administrativo'/>">Voltar</a></li>
                     </ul>
 
                 </div>

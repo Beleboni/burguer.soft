@@ -43,13 +43,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
-				<form class="form-horizontal">
+				<form class="form-horizontal" action="/listaPedido" method="post">
 					<h2 class="page-header">Novo pedido</h2>
 					<div class="form-group">
 						<label for="tipo_produto" class="col-sm-2 control-label">
 							Número da mesa *</label>
 						<div class="col-sm-2">
-							<input type="text" class="form-control" id="numero_mesa"
+							<input type="text" class="form-control" name="pedido" id="numero_mesa"
 								placeholder="Número da mesa" required="required">
 						</div>
 					</div>
