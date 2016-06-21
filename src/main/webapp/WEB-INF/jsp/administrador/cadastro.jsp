@@ -99,7 +99,7 @@
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Cadastrar
 						colaborador</button>
-					<button type="reset" class="btn btn-warning"><i class="fa fa-eraser" aria-hidden="true"></i> Limpar campos</button>
+					
 				</div>
 			</div>
 		</form>

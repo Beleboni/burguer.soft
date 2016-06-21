@@ -10,9 +10,13 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Result;
 import br.com.dao.FuncionarioDAO;
+import br.com.dao.ItemPedidoDAO;
+import br.com.dao.PedidoDAO;
 import br.com.dao.ProdutoDAO;
+import br.com.enums.StatusPedido;
 import br.com.exception.DAOException;
 import br.com.model.Funcionario;
+import br.com.model.Pedido;
 import br.com.model.Produto;
 
 @Controller
@@ -24,6 +28,12 @@ public class AdministradorController {
 	@Inject
 	private ProdutoDAO produtoDAO;
 
+	@Inject
+	private ItemPedidoDAO itemPedidoDAO;
+	
+	@Inject
+	private PedidoDAO pedidoDAO;
+	
 	@Inject
 	private Result result;
 
@@ -73,7 +83,12 @@ public class AdministradorController {
 	}
 	
 	@Get("/todosPedidosAdministrador")
-	public void todosPedidosAdministrador(){
+	public List<Pedido> todosPedidosAdministrador() {
+		List<Pedido> pedidos = pedidoDAO.findPedidoPorStatus(StatusPedido.EM_PROCESSO);
 		
+		for (Pedido pedido : pedidos)
+			pedido.setItens(itemPedidoDAO.findByPedido(pedido));
+		
+		return pedidos;
 	}
 }

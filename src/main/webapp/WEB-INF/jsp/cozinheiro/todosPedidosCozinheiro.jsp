@@ -44,27 +44,49 @@
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <h1 class="page-header">Todos os Pedidos</h1>
                     <div class="table-responsive">
-                        <h3>Mesa: 02</h3>
-                        <table class="table">
-                            <thead>
-                                <tr class="success">
-                                    <th>Descrição</th>
-                                    <th>Quantidade</th>
-                                    <th>Status</th>
-                                    <th>Ação</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>X-Salada</td>
-                                    <td>2</td>
-                                    <td>Em processo</td>
-                                    <td>
-                                        <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" ></i></a>
-                                     </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    	<c:forEach items="${pedidoList}" var="pedido">
+                    	<div class="panel panel-default">
+						  <div class="panel-heading"><b>Mesa:</b> ${pedido.mesa} - <b>Data de processo do pedido:</b> ${pedido.dataPedido}</div>
+						  <div class="panel-body no-padding">
+	                        <table class="table no-margin">
+	                            <thead>
+	                                <tr class="success">
+	                                    <th>Descrição</th>
+	                                    <th class="text-center">Quantidade</th>
+	                                    <th class="text-center">Valor</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                            	<c:forEach items="${pedido.itens}" var="item">
+	                                <tr>
+	                                    <td>
+	                                    	<c:out value="${item.produto.descricao}" />
+	                                    </td>
+	                                    <td class="text-center">
+	                                    	<c:out value="${item.quantidade}" />
+	                                    </td>
+	                                    <td class="text-center">
+	                                    	<c:out value="${item.valor}" />
+	                                    </td>
+	                                </tr>
+	                                </c:forEach>
+	                            </tbody>
+	                            <tfoot>
+	                            	<tr>
+	                            		<td class="text-right" colspan="2">
+	                            			<strong>Total:</strong>
+	                            		</td>
+	                            		<td class="text-center">
+	                            			<strong>
+	                            				<c:out value="${pedido.valorTotal}" />
+	                            			</strong>
+	                            		</td>
+	                            	<tr>
+	                            </tfoot>
+	                        </table>
+						  </div>
+						</div> 
+                        </c:forEach>
                     </div>
                 </div>
             </div>

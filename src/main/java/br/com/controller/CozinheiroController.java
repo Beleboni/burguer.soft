@@ -9,8 +9,12 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Result;
+import br.com.dao.ItemPedidoDAO;
+import br.com.dao.PedidoDAO;
 import br.com.dao.ProdutoDAO;
+import br.com.enums.StatusPedido;
 import br.com.exception.DAOException;
+import br.com.model.Pedido;
 import br.com.model.Produto;
 
 @Controller
@@ -21,6 +25,12 @@ public class CozinheiroController {
 	
 	@Inject
 	private Result result;
+	
+	@Inject
+	private ItemPedidoDAO itemPedidoDAO;
+	
+	@Inject
+	private PedidoDAO pedidoDAO;
 	
 	private Produto produto = new Produto();
 	
@@ -67,9 +77,15 @@ public class CozinheiroController {
 		}
 	}
 	
+	
 	@Get("/todosPedidosCozinheiro")
-	public void todosPedidosCozinheiro(){
+	public List<Pedido> todosPedidosCozinheiro() {
+		List<Pedido> pedidos = pedidoDAO.findPedidoPorStatus(StatusPedido.EM_PROCESSO);
 		
+		for (Pedido pedido : pedidos)
+			pedido.setItens(itemPedidoDAO.findByPedido(pedido));
+		
+		return pedidos;
 	}
 	
 }

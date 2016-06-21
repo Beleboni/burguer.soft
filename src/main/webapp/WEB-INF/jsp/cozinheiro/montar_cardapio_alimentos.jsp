@@ -84,9 +84,6 @@
 							<button type="submit" class="btn btn-primary">
 								<i class="fa fa-check" aria-hidden="true"></i> Cadastrar item
 							</button>
-							<button type="reset" class="btn btn-warning">
-								<i class="fa fa-eraser" aria-hidden="true"></i> Limpar campos
-							</button>
 						</div>
 					</div>
 				</form>
