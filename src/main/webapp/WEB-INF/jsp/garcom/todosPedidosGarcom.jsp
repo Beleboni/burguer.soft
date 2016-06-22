@@ -5,20 +5,12 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="../../favicon.ico">
+        <link rel="icon" href="<%=request.getContextPath()%>/resources/estilo/img/favicon.png">
         <title>:: Burguer Soft ::</title>
-        <link
-			href="<%=request.getContextPath()%>/resources/estilo/css/bootstrap.min.css"
-			rel="stylesheet" type="text/css" />
-		<link
-			href="<%=request.getContextPath()%>/resources/estilo/css_sistema/estilo.css"
-			rel="stylesheet" type="text/css" />
-		<link
-			href="<%=request.getContextPath()%>/resources/estilo/font-awesome/css/font-awesome.min.css"
-			rel="stylesheet" type="text/css" />	
+        <link href="<%=request.getContextPath()%>/resources/estilo/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="<%=request.getContextPath()%>/resources/estilo/css_sistema/estilo.css" rel="stylesheet" type="text/css" />
+		<link href="<%=request.getContextPath()%>/resources/estilo/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />	
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -34,9 +26,8 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a>Costelão Restaurante</a></li>
-                        <li><a>Usuário: Pedro da Silva</a></li>
-                        <li><a href="index.html">Sair</a></li>
+                        <li><a>Usuário: ${usuario.funcionario.nome}</a></li>
+                     	<li><a href="${linkTo[IndexController].logout}">Sair</a></li>
                     </ul>
                 </div>
             </div>
@@ -47,7 +38,7 @@
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
                         <li class="active"><a href="#">Administrar <span class="sr-only">(current)</span></a></li>
-                        <li><a href="<c:url value='/painelGarcom'/>">Voltar</a></li>
+                        <li><a href="<c:url value='/painelGarcom'/>"><i class="fa fa-chevron-left" aria-hidden="true"></i> Voltar</a></li>
                     </ul>
 
                 </div>
@@ -58,10 +49,10 @@
                         <table class="table">
                             <thead>
                                 <tr class="success">
-                                    <th>DescriÃ§Ã£o</th>
+                                    <th>Descrição</th>
                                     <th>Quantidade</th>
                                     <th>Status</th>
-                                    <th>AÃ§Ã£o</th>
+                                    <th>Ação</th>
                                 </tr>
                             </thead>
                             <tbody>

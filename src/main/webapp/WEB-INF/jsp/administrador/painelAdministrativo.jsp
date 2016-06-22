@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>::Burguer Soft::</title>
-<link rel="icon" href="estilo/img/favicon.png">
+<link rel="icon" href="<%=request.getContextPath()%>/resources/estilo/img/favicon.png">
 <link href="<%=request.getContextPath()%>/resources/estilo/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="<%=request.getContextPath()%>/resources/estilo/css_sistema/estilo.css" rel="stylesheet" type="text/css" />
 <link href="<%=request.getContextPath()%>/resources/estilo/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -31,7 +31,7 @@
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a>Usuário: ${usuario.funcionario.nome}</a></li>
-					<li><a href="#">Sair</a></li>
+					<li><a href="${linkTo[IndexController].logout}">Sair</a></li>
 				</ul>
 			</div>
 		</div>

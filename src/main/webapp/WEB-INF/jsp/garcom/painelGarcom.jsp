@@ -5,22 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
 <title>:: Burguer Soft ::</title>
-<link
-	href="<%=request.getContextPath()%>/resources/estilo/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/resources/estilo/css_sistema/estilo.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/resources/estilo/css_sistema/dashboard.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="<%=request.getContextPath()%>/resources/estilo/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css" />
+<link rel="icon" href="<%=request.getContextPath()%>/resources/estilo/img/favicon.png">
+<link href="<%=request.getContextPath()%>/resources/estilo/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/resources/estilo/css_sistema/estilo.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/resources/estilo/css_sistema/dashboard.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/resources/estilo/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -38,9 +28,8 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a>Costelão Restaurante</a></li>
-					<li><a>Usuário: Pedro da Silva</a></li>
-					<li><a href="index.html">Sair</a></li>
+					<li><a>Usuário: ${usuario.funcionario.nome}</a></li>
+					<li><a href="${linkTo[IndexController].logout}">Sair</a></li>
 				</ul>
 			</div>
 		</div>

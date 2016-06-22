@@ -3,6 +3,7 @@ package br.com.controller;
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
+import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
@@ -52,5 +53,13 @@ public class IndexController {
 		
 		funcionario.getSetor().redirecionarParaPainel(result);
 	}
+	
+	@Get("/logout")
+	public void logout(){		
+		usuarioSessao.setFuncionario(null);
+		result.redirectTo(IndexController.class).index();
+	}
+	
+	
 
 }
