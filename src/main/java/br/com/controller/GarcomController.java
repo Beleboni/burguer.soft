@@ -94,8 +94,12 @@ public class GarcomController {
 
 	@Get("/todosPedidosGarcom")
 	public List<Pedido> todosPedidosGarcom() {
-		return pedidoDAO.findPedidoPorStatus(StatusPedido.EM_PROCESSO);
-
+		List<Pedido> pedidos = pedidoDAO.findPedidoPorStatus(StatusPedido.EM_PROCESSO);
+		
+		for (Pedido pedido : pedidos)
+			pedido.setItens(itemPedidoDAO.findByPedido(pedido));
+		
+		return pedidos;
 	}
 
 	@Post("/salvarPedido")
@@ -121,8 +125,6 @@ public class GarcomController {
 				} catch (DAOException e) {
 					e.printStackTrace();
 				}
-			} else {
-				pedido.getItens().remove(ip);
 			}
 		}
 	}

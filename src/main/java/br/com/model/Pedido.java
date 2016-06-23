@@ -2,14 +2,12 @@ package br.com.model;
 
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,31 +22,31 @@ import br.com.enums.StatusPedido;
 import br.com.interfaces.UsoCodigo;
 
 @Entity
-@NamedQueries({
-	@NamedQuery(name = "Pedido.TODOS_PEDIDOS", query = "select p from Pedido p left join fetch p.itens where p.statusPedido = ?1")
-})
+@NamedQueries({ @NamedQuery(name = "Pedido.TODOS_PEDIDOS", query = "select p from Pedido p left join fetch p.itens where p.statusPedido = ?1") })
 public class Pedido implements UsoCodigo {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
+
 	@Column(nullable = false, length = 10)
 	private Integer mesa;
+
 	@Temporal(TemporalType.DATE)
 	private Date dataPedido = new Date();
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, length = 30)
 	private StatusPedido statusPedido = StatusPedido.EM_PROCESSO;
-	
+
 	@ManyToOne(optional = false, targetEntity = Funcionario.class)
 	private Funcionario funcionario;
-	
-	@OneToMany(fetch = FetchType.LAZY)
-	private Set<ItemPedido> itens = new HashSet<ItemPedido>();
-	
-	
+
+	@OneToMany
+	private Set<ItemPedido> itens = new HashSet<>();
+
 	public Pedido() {
-		
+
 	}
 
 	@Override
@@ -88,7 +86,10 @@ public class Pedido implements UsoCodigo {
 		this.funcionario = funcionario;
 	}
 
-	
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
 	public Set<ItemPedido> getItens() {
 		return itens;
 	}
@@ -96,9 +97,9 @@ public class Pedido implements UsoCodigo {
 	public void setItens(Set<ItemPedido> itens) {
 		this.itens = itens;
 	}
-
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
-	}
 	
+	public Double getValorTotal() {
+		return this.getItens().stream().mapToDouble((ip) -> ip.getValor()).sum();
+	}
+
 }

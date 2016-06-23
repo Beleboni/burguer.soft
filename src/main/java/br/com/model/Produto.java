@@ -29,15 +29,17 @@ public class Produto implements UsoCodigo {
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, length = 30)
 	private TipoProduto tipoProduto;
+	
 	@Column(nullable = false, length = 30)
 	private Double valor;
+	
 	@Column(nullable = false, length = 200)
 	private String descricao;
 
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, length = 30)
 	private Status status = Status.ATIVO;
-
+	
 	public Produto() {
 
 	}

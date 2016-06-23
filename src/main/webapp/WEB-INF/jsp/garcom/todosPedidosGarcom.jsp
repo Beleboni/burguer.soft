@@ -48,23 +48,42 @@
                     	<c:forEach items="${pedidoList}" var="pedido">
                     	<div class="panel panel-default">
 						  <div class="panel-heading"><b>Mesa:</b> ${pedido.mesa} - <b>Data de processo do pedido:</b> ${pedido.dataPedido}</div>
-						  <div class="panel-body">                        
-	                        <table class="table">
+						  <div class="panel-body no-padding">
+	                        <table class="table no-margin">
 	                            <thead>
 	                                <tr class="success">
 	                                    <th>Descrição</th>
-	                                    <th>Quantidade</th>
-	                                    <th>Status</th>
+	                                    <th class="text-center">Quantidade</th>
+	                                    <th class="text-center">Valor</th>
 	                                </tr>
 	                            </thead>
 	                            <tbody>
 	                            	<c:forEach items="${pedido.itens}" var="item">
 	                                <tr>
-	                                    <td>${item.produto.descricao}</td>
-	                                    <td>${item.quantidade}</td>
+	                                    <td>
+	                                    	<c:out value="${item.produto.descricao}" />
+	                                    </td>
+	                                    <td class="text-center">
+	                                    	<c:out value="${item.quantidade}" />
+	                                    </td>
+	                                    <td class="text-center">
+	                                    	<c:out value="${item.valor}" />
+	                                    </td>
 	                                </tr>
 	                                </c:forEach>
 	                            </tbody>
+	                            <tfoot>
+	                            	<tr>
+	                            		<td class="text-right" colspan="2">
+	                            			<strong>Total:</strong>
+	                            		</td>
+	                            		<td class="text-center">
+	                            			<strong>
+	                            				<c:out value="${pedido.valorTotal}" />
+	                            			</strong>
+	                            		</td>
+	                            	<tr>
+	                            </tfoot>
 	                        </table>
 						  </div>
 						</div> 
