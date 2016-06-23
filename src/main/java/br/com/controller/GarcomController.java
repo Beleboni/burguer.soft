@@ -14,6 +14,7 @@ import br.com.caelum.vraptor.Result;
 import br.com.dao.ItemPedidoDAO;
 import br.com.dao.PedidoDAO;
 import br.com.dao.ProdutoDAO;
+import br.com.enums.StatusPedido;
 import br.com.enums.TipoProduto;
 import br.com.exception.DAOException;
 import br.com.model.ItemPedido;
@@ -92,7 +93,8 @@ public class GarcomController {
 	}
 
 	@Get("/todosPedidosGarcom")
-	public void todosPedidosGarcom() {
+	public List<Pedido> todosPedidosGarcom() {
+		return pedidoDAO.findPedidoPorStatus(StatusPedido.EM_PROCESSO);
 
 	}
 

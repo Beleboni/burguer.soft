@@ -70,7 +70,7 @@
                                                                     <td>
                                                                     	<input type="hidden" name="itens[].valor" class="desabilitar" value="${produto.valor}" disabled="disabled">
                                                                         <label>
-                                                                            <input type="checkbox" name="itens[].produto.codigo" value="${produto.codigo}" class="sel-produto"> ${produto.descricao}
+                                                                            <input type="checkbox" name="itens[].produto.codigo" value="${produto.codigo}" class="sel-produto"> ${produto.descricao} - valor ${produto.valor} - unidade
                                                                         </label>
                                                                     </td>
                                                                     <td>

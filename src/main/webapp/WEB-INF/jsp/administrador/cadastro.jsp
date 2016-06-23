@@ -82,7 +82,7 @@
 				<label for="inputSenha" class="col-sm-2 control-label">
 					Senha *</label>
 				<div class="col-sm-3">
-					<input type="text" class="form-control" name="funcionario.senha"
+					<input type="password" class="form-control" name="funcionario.senha"
 						placeholder="Senha">
 				</div>
 			</div>
